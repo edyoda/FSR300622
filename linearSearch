@@ -1,0 +1,21 @@
+// code for linear search as discussed in class
+
+//linearSearch.js file
+
+console.log("Hi");
+console.clear();
+//arrow function es6
+const linearSearch = (arr, key) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === key) {
+      return i;
+    }
+  }
+
+  return -1;
+};
+
+let arr = [2, 5, 4, 7, 3, 1, 5, 9, 10];
+let key = 1;
+
+console.log(linearSearch(arr, key));
