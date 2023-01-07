@@ -1,0 +1,42 @@
+const merge = (arr1, arr2) => {
+  let res = [],
+    li = 0;
+  ri = 0; //result,left index,right index
+  while (li < arr1.length && ri < arr2.length) {
+    if (arr1[li] < arr2[ri]) {
+      res.push(arr1[li]);
+      li++;
+    } else {
+      res.push(arr2[ri]);
+      ri++;
+    }
+  }
+  if (arr1[li]) {
+    let rem = arr1.slice(li); //remaining array
+    for (let i = 0; i < rem.length; i++) {
+      res.push(rem[i]);
+    }
+  }
+
+  if (arr2[ri]) {
+    let rem = arr2.slice(ri);
+    for (let i = 0; i < rem.length; i++) {
+      res.push(rem[i]);
+    }
+  }
+  return res;
+};
+
+const mergeSort = (arr) => {
+  let n = arr.length;
+  if (n <= 1) {
+    return arr;
+  }
+  let midPos = Math.floor(arr.length / 2);
+  let left = arr.slice(0, midPos);
+  let right = arr.slice(midPos);
+  return merge(mergeSort(left), mergeSort(right));
+};
+
+let arr_merge = [26, 39, 12, 42, 11, 9, 45, 8, 52];
+console.log(mergeSort(arr_merge));
