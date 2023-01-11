@@ -1,0 +1,32 @@
+const bucketSort = (arr) => {
+  let n = arr.length;
+  if (n < 1) {
+    return arr;
+  }
+
+  let bucketArr = new Array(n);
+  for (let i = 0; i < n; i++) {
+    bucketArr[i] = [];
+  }
+  for (let i = 0; i < n; i++) {
+    let index = Math.floor(n * arr[i]);
+    bucketArr[index].push(arr[i]);
+  }
+  for (let i = 0; i < n; i++) {
+    bucketArr[i].sort(function (a, b) {
+      return a - b;
+    });
+  }
+
+  let idx = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < bucketArr[i].length; j++) {
+      arr[idx++] = bucketArr[i][j];
+    }
+  }
+};
+
+let arr_bucket = [0.32, 0.1, 0.22, 0.31, 0.12, 0.21];
+console.log(arr_bucket);
+bucketSort(arr_bucket);
+console.log(arr_bucket);
